@@ -11,10 +11,14 @@ import 'package:quotes_app/ui/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter();
+  try{
+    await Hive.initFlutter();
   Hive.registerAdapter(FavorateAdapter());
   await HiveServers().boxInit();
   await ThemePreference().init();
+  }catch (e){
+    print(e.toString());
+  }
 
   runApp(MyApp());
 }

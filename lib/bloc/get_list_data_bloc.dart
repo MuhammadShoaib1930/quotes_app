@@ -4,7 +4,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quotes_app/app_constant/app_constant.dart';
 import 'package:quotes_app/hive_servers/hive_servers.dart';
-import 'package:quotes_app/hive_servers/theme_preference.dart';
 import 'package:quotes_app/internet_servers/internet_servers.dart';
 import 'package:quotes_app/models/random_page_list.dart';
 
@@ -25,7 +24,7 @@ class GetListDataBloc extends Bloc<BaseGetListDataEvent, BaseGetListDataState> {
     Emitter<BaseGetListDataState> emit,
   ) async {
     emit(LoadingState());
-    List<RandomPageList> data = await InternetServers().getListData(AppConstant.getURL(ThemePreference().slider.toInt()));
+    List<RandomPageList> data = await InternetServers().getListData(AppConstant.getURL);
     emit(GetListDataState(data));
   }
 

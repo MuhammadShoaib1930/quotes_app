@@ -12,9 +12,3 @@ class ThemeChnagerEvent extends BaseAppDrawerEvent{
   @override
   List<Object> get props => [isDark];
 }
-class SliderCangerEvent extends BaseAppDrawerEvent{
-  final double numberOfQueots;
-  const SliderCangerEvent(this.numberOfQueots);
-  @override
-  List<Object> get props => [numberOfQueots];
-}

@@ -55,35 +55,14 @@ class _CostomedDrawerState extends State<CostomedDrawer> {
               ),
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Text("Dark", style: titleStyle),
-
-              BlocBuilder<AppDrawerBloc, AppDrawerState>(
-                builder: (context, state) {
-                  return Slider(
-                    min: 0,
-                    max: 1000,
-                    divisions: 1000,
-                    label: state.numberOfQueots.round().toString(),
-                    value: state.numberOfQueots,
-                    onChanged: (newValue) {
-                      context.read<AppDrawerBloc>().add(
-                        SliderCangerEvent(newValue),
-                      );
-                    },
-                  );
-                },
-              ),
-            ],
-          ),
+         
           TextButton(
             onPressed: () {
               context.read<GetListDataBloc>().add(ResetEvent());
               context.read<AppDrawerBloc>().add(
                 ThemeChnagerEvent(isDark: false),
               );
+              Navigator.pop(context);
             },
             child: Text("Reset", style: titleStyle),
           ),

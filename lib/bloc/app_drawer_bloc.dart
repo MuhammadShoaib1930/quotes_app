@@ -1,4 +1,4 @@
-import 'dart:async';
+
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -14,42 +14,26 @@ class AppDrawerBloc extends Bloc<BaseAppDrawerEvent, AppDrawerState> {
         AppDrawerState(
           themeData:
               (ThemePreference().isDark) ? ThemeData.dark() : ThemeData.light(),
-          numberOfQueots: ThemePreference().slider,
         ),
       ) {
     on<ThemeChnagerEvent>(_themeChanger);
-    on<SliderCangerEvent>(_sliderChangerEvent);
   }
   void _themeChanger(ThemeChnagerEvent event, Emitter<AppDrawerState> emit) {
     if (event.isDark) {
       ThemePreference().setDark(event.isDark);
       emit(
         AppDrawerState(
-          themeData: ThemeData.dark(),
-          numberOfQueots: state.numberOfQueots,
-        ),
+          themeData: ThemeData.dark(),        ),
       );
     } else {
       ThemePreference().setDark(event.isDark);
       emit(
         AppDrawerState(
           themeData: ThemeData.light(),
-          numberOfQueots: state.numberOfQueots,
         ),
       );
     }
   }
 
-  FutureOr<void> _sliderChangerEvent(
-    SliderCangerEvent event,
-    Emitter<AppDrawerState> emit,
-  ) {
-    ThemePreference().setSliderValue(event.numberOfQueots);
-    emit(
-      AppDrawerState(
-        themeData: state.themeData,
-        numberOfQueots: event.numberOfQueots,
-      ),
-    );
-  }
+ 
 }

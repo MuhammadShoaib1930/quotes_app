@@ -2,7 +2,7 @@
 
 class AppConstant {
   static final String boxName = "favorate_storage";
-  static String getURL(int value)=>"https://en.wikiquote.org/w/api.php?action=query&list=random&rnnamespace=0&rnlimit=$value&format=json";
+  static String getURL="https://en.wikiquote.org/w/api.php?action=query&list=random&rnnamespace=0&rnlimit=1000&format=json";
   static String getUrlInfromation(String title){
     return "https://en.wikiquote.org/w/api.php?action=parse&page=$title&format=json&prop=text&formatversion=2";
   }
